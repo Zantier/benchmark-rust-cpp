@@ -1,5 +1,5 @@
-const N: i32 = 10;
 struct Perm {
+    n: i32,
     res: Vec<String>,
 }
 
@@ -14,18 +14,20 @@ fn fact(n: usize) -> usize {
 impl Perm {
 
     fn new(n: i32) -> Perm {
+
         Perm {
+            n,
             res: Vec::with_capacity(fact(n as usize))
         }
     }
 
     fn rec(&mut self, done: i32, s: String) {
-        if done == (1<<N)-1 {
+        if done == (1<<self.n)-1 {
             self.res.push(s);
             return;
         }
 
-        for i in 0..N {
+        for i in 0..self.n {
             if 1<<i&done > 0 {
                 continue;
             }
@@ -38,8 +40,9 @@ impl Perm {
         }
     }
 }
+
 fn main() {
-    let mut perm = Perm::new(N);
+    let mut perm = Perm::new(10);
 
     perm.rec(0, String::from(""));
     println!("Size: {}", perm.res.len());
