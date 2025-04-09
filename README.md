@@ -1,6 +1,16 @@
 # Benchmarks between Rust and C++
 
-Requirements: `cargo`, `g++`, `make`
+## Setup
+
+- Install `direnv`, `nix`, `rustup`.
+
+Then run the following:
+```bash
+rustup default stable
+direnv allow
+```
+
+## Run
 
 In each directory, run
 
